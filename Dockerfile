@@ -15,8 +15,8 @@ ENV JAVA_VERSION=8
 # Use baseimage's init system.
 CMD ["/sbin/my_init"]
 
-# Install Cromwell
-RUN apt-get update && apt-get install -y wget && \
+# Install Java/Scala/Sbt and download SBT jars
+RUN apt-get update && apt-get install -y wget tree && \
     add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) multiverse" && \
     add-apt-repository -y ppa:webupd8team/java && \
     echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections && \
@@ -29,9 +29,10 @@ RUN apt-get update && apt-get install -y wget && \
     dpkg -i sbt-${SBT_VERSION}.deb && \
     apt-get update && \
     apt-get install -y scala sbt && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /*.deb
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /*.deb && \
+    echo "exit" | sbt
 
-# Add a service to runit.  runit will make sure the service stays alive
+# Add a service to runit.  runit will make sure the service stays alive.
 # If it dies, for whatever reason, even a kill -9, it will run the 'run.sh'
 # in this example to restart it
 
