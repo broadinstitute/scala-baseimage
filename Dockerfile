@@ -4,13 +4,13 @@
 # and monitor services.
 
 # http://phusion.github.io/baseimage-docker/
-FROM phusion/baseimage
+FROM phusion/baseimage:0.9.16
 
 # Cromwell's HTTP Port
-ENV TERM=xterm-256color
-ENV SCALA_VERSION=2.11.6
-ENV SBT_VERSION=0.13.8
-ENV JAVA_VERSION=8
+ENV TERM=xterm-256color \
+    SCALA_VERSION=2.11.6 \
+    SBT_VERSION=0.13.8 \
+    JAVA_VERSION=8
 
 # Use baseimage's init system.
 CMD ["/sbin/my_init"]
