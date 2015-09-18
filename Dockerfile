@@ -15,7 +15,6 @@ ENV TERM=xterm-256color \
 # Use baseimage's init system.
 CMD ["/sbin/my_init"]
 
-# Install Java/Scala/SBT and download SBT jars
 RUN apt-get update && apt-get install -y wget tree htop zip unzip && \
     add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) multiverse" && \
     add-apt-repository -y ppa:webupd8team/java && \
@@ -26,13 +25,12 @@ RUN apt-get update && apt-get install -y wget tree htop zip unzip && \
 
     # Install Java Cryptography Extensions to allow Java programs to use longer bit-length encryption (e.g. AES-256)
     # See: http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html
-    cd /tmp && \
     curl -LO "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip" -H 'Cookie: oraclelicense=accept-securebackup-cookie' && \
     unzip jce_policy-8.zip && \
-    cd UnlimitedJCEPolicyJDK8 && \
-    cp *.jar $JAVA_HOME/lib/security && \
-    cd - && \
+    cp UnlimitedJCEPolicyJDK8/*.jar $JAVA_HOME/lib/security && \
+    rm -rf jce_policy-8.zip UnlimitedJCEPolicyJDK8 && \
 
+    # Download and install Scala, SBT
     wget http://www.scala-lang.org/files/archive/scala-${SCALA_VERSION}.deb && \
     wget http://dl.bintray.com/sbt/debian/sbt-${SBT_VERSION}.deb && \
     dpkg -i scala-${SCALA_VERSION}.deb && \
@@ -40,6 +38,8 @@ RUN apt-get update && apt-get install -y wget tree htop zip unzip && \
     apt-get update && \
     apt-get install -y scala sbt && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /*.deb && \
+
+    # This next command makes SBT download all JARs necessary to run so using SBT the first time isn't so painful.
     echo "exit" | sbt
 
 # Add a service to runit.  runit will make sure the service stays alive.
@@ -48,3 +48,14 @@ RUN apt-get update && apt-get install -y wget tree htop zip unzip && \
 
 #RUN mkdir /etc/service/my_service
 #ADD ./run.sh /etc/service/my_service/run
+
+# These next 4 commands are for enabling SSH to the container.
+# id_rsa.pub is referenced below, but this should be any public key
+# that you want to be added to authorized_keys for the root user.
+# Copy the public key into this directory because ADD cannot reference
+# files outside of this directory
+
+#EXPOSE 22
+#RUN rm -f /etc/service/sshd/down
+#ADD id_rsa.pub /tmp/id_rsa.pub
+#RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys
