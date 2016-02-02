@@ -1,5 +1,7 @@
 # scala-baseimage
 
+[![](http://badge-imagelayers.iron.io/broadinstitute/scala-baseimage:latest.svg)](http://imagelayers.iron.io/?images=broadinstitute/scala-baseimage:latest 'Get your own badge on imagelayers.iron.io')
+
 This is a base Docker image for Scala applications, specifically web services.  Currently this image will have installed:
 
 * Java 8
