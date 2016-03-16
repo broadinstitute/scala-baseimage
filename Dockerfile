@@ -7,7 +7,7 @@
 FROM phusion/baseimage:0.9.17
 
 ENV TERM=xterm-256color \
-    SCALA_VERSION=2.11.7 \
+    SCALA_VERSION=2.11.8 \
     SBT_VERSION=0.13.9 \
     JAVA_VERSION=8 \
     JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre
