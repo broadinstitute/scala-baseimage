@@ -5,7 +5,7 @@
 This is a base Docker image for Scala applications, specifically web services.  Currently this image will have installed:
 
 * Java 8
-* Scala 2.11.7
+* Scala 2.11.8
 * SBT 0.13.9
 
 This image is build off of [baseimage-docker](http://phusion.github.io/baseimage-docker/), which provides an init system and process supervisor called [runit](http://smarden.org/runit/) for starting and monitoring services.
