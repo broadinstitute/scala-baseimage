@@ -10,4 +10,4 @@ This image is built off of the latest AdoptOpenJDK Java 11 image.
 
 The current version of the image is here: [us.gcr.io/broad-dsp-gcr-public/scala-baseimage](https://us.gcr.io/broad-dsp-gcr-public/scala-baseimage)
 
-The image on Dockerhub ([here](https://registry.hub.docker.com/u/broadinstitute/scala-baseimage/)) is the legacy JDK 8 image.
+The image on Dockerhub ([here](https://registry.hub.docker.com/r/broadinstitute/scala-baseimage/)) is the legacy JDK 8 image.
