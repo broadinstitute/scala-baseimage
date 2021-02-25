@@ -1,4 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'us.gcr.io/broad-dsp-gcr-public/scala-baseimage', '.' ]
-images: [ 'us.gcr.io/broad-dsp-gcr-public/scala-baseimage' ]
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['./build.sh']
+    env: ['PROJECT=$PROJECT_ID']
