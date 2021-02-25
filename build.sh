@@ -14,5 +14,5 @@ for i in $(seq 0 $((${#SCALA_VERSIONS[@]} - 1))); do
     -t "$IMAGE_NAME" \
     .
 
-#  docker push "$IMAGE_NAME"
+  docker push "$IMAGE_NAME"
 done
