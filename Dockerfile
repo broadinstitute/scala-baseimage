@@ -7,7 +7,7 @@ RUN \
   apt-get install -y git && \
   rm -rf /var/lib/apt/lists/*
 
-# Any RUN command after an ARG is set has that arg in it as an environment variable and thus
+# Any RUN command after an ARG is set has that value in it as an environment variable and thus
 # invalidates layer cache, so only declaring these ARGs when they're used
 
 ARG SBT_VERSION
