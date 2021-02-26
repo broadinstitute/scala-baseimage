@@ -21,7 +21,8 @@ RUN \
   mkdir /setup-project && \
   cd /setup-project && \
   echo "scalaVersion := \"${SCALA_VERSION}\"" > build.sbt && \
-  sbt sbtVersion scalaVersion && \
+  echo "case object Temp" > Temp.scala && \
+  sbt compile && \
   rm -rf /setup-project
 
 ENTRYPOINT "bash"
