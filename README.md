@@ -10,15 +10,25 @@ Contains:
 
 This image is built off of the latest AdoptOpenJDK Java 11 image.
 
-The current version of the image is here: [us.gcr.io/broad-dsp-gcr-public/scala-baseimage](https://us.gcr.io/broad-dsp-gcr-public/scala-baseimage)
+The current version of the image is here: [broadinstitute/scala-baseimage](https://registry.hub.docker.com/r/broadinstitute/scala-baseimage/)
 
-The image on Dockerhub ([here](https://registry.hub.docker.com/r/broadinstitute/scala-baseimage/)) is the legacy JDK 8 image.
+***N.B. The `latest` tag points to a legacy Java 8 image!***
 
 ### Available tags
+
+Java 11:
 
 | Scala   | SBT   | Tag                   |
 |---------|-------|-----------------------|
 | 2.12.11 | 1.4.7 | `jdk11-2.12.11-1.4.7` |
 | 2.12.12 | 1.4.6 | `jdk11-2.12.12-1.4.6` |
+
+Java 8 (Legacy):
+
+| Scala  | SBT     | Tag            |
+|--------|---------|----------------|
+| 2.12.2 | 0.13.15 | `scala-2.12.2` |
+| 2.11.8 | 0.13.12 | `scala-2.11.8` |
+| 2.11.7 | 0.13.9  | `latest`       |
 
 (See [build.sh](build.sh))

@@ -6,7 +6,7 @@ SBT_VERSIONS=(    1.4.7     1.4.6)
 
 # $((x - 1)) is needed because otherwise it actually outputs length, but we need to be zero-indexed
 for i in $(seq 0 $((${#SCALA_VERSIONS[@]} - 1))); do
-  IMAGE_NAME="us.gcr.io/$PROJECT/scala-baseimage:jdk11-${SCALA_VERSIONS[i]}-${SBT_VERSIONS[i]}"
+  IMAGE_NAME="broadinstitute/scala-baseimage:jdk11-${SCALA_VERSIONS[i]}-${SBT_VERSIONS[i]}"
 
   docker build \
     --build-arg SCALA_VERSION="${SCALA_VERSIONS[i]}" \
