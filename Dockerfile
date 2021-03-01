@@ -25,4 +25,4 @@ RUN \
   sbt compile && \
   rm -rf /setup-project
 
-ENTRYPOINT "bash"
+ENTRYPOINT ["bash"]
