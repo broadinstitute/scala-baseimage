@@ -8,7 +8,7 @@ Contains:
 * SBT
 * Git
 
-This image is built off of the latest AdoptOpenJDK Java 11 image.
+This image is built off of the latest AdoptOpenJDK Java 11 image. It is currently published manually.
 
 The current version of the image is here: [broadinstitute/scala-baseimage](https://registry.hub.docker.com/r/broadinstitute/scala-baseimage/)
 
